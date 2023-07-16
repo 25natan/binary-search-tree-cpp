@@ -1,4 +1,5 @@
 #include "bst.h"
+#include <iostream>
 struct Point {
     float _x, _y;
     Point(float x, float y): _x(x), _y(y) {}
@@ -8,6 +9,9 @@ struct Point {
 };
 bool operator<=(const Point& p1, const Point& p2) {
     return p1.distanceFromOrigin() <= p2.distanceFromOrigin();
+}
+bool operator==(const Point& p1, const Point& p2) {
+    return p1._x == p2._x && p1._y == p2._y;
 }
 std::ostream& operator<<(std::ostream& out, const Point& p) {
     out << '(' << p._x << ',' << p._y << ')';
@@ -19,11 +23,13 @@ int main() {
     bstDouble.printData(Travers::InOrder);
     bstDouble.printData(Travers::PreOrder);
     bstDouble.printData(Travers::PostOrder);
+    std::cout << std::boolalpha << bstDouble.find(0.5) << std::endl;
 
     Bst<int> bstInt({5, -1, 7, 6});
     bstInt.printData(Travers::InOrder);
     bstInt.printData(Travers::PreOrder);
     bstInt.printData(Travers::PostOrder);
+    std::cout << std::boolalpha << bstInt.find(8) << std::endl;
 
     Bst<Point> bstPoint({Point(1,2)});
     bstPoint.insert(Point(4,-3))
@@ -31,5 +37,7 @@ int main() {
     bstPoint.printData(Travers::InOrder);
     bstPoint.printData(Travers::PreOrder);
     bstPoint.printData(Travers::PostOrder);
+    std::cout << std::boolalpha << bstPoint.find(Point(5,9)) << std::endl;
+
     return 0;
 }

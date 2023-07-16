@@ -58,7 +58,7 @@ public:
     }
 private:
     Node* _root = nullptr;
-    bool find(Node *node, const T& data) {
+    bool find(Node *node, const T& data) const {
         return node && (node->_data == data || find(node->_left, data) || find(node->_right, data));
     }
     void printDataInOrder(Node *node) {
