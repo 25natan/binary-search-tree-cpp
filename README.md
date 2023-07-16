@@ -4,7 +4,7 @@ To use it, you can simply include it in your source code.<br/>
 The elements in the tree can be of any type as long as it implements the operators `<=` and `<<`<br/>
 
 Code example for usage with `int` and `double` types and also with custom class `Point`:
-```
+```cpp
 #include "bst.h"
 struct Point {
     float _x, _y;
